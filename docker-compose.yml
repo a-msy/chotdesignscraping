@@ -5,11 +5,13 @@ services:
     ports:
       - 4444:4444
       - 5900:5900
+    volumes:
+      - /dev/shm:/dev/shm
+    shm_size: "2gb"
   app:
     build: .
     volumes:
       - ./app:/app
-      - /dev/shm:/dev/shm
     environment:
       SELENIUM_URL: http://selenium:4444/wd/hub
     tty: true
